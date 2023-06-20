@@ -1,0 +1,9 @@
+[submodule "wezterm"]
+	path = wezterm
+	url = git@github.com:STBoyden/wezterm-config
+[submodule "starship"]
+	path = starship
+	url = git@github.com:STBoyden/starship-config
+[submodule "fish"]
+	path = fish
+	url = git@github.com:STBoyden/fish-config
