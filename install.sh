@@ -25,3 +25,18 @@ git submodule update --recursive --remote # update all submodules
 git add     -A
 git commit  -m "Updated to latest submodules as of $(date --iso-8601=date)"
 git push
+
+for directory in */ ; do
+    [ -L "${directory%/}" ] && continue
+
+    ln -s "$(pwd)/$directory" "$HOME/.config/$directory"
+
+    if [[ -n $(find "$HOME/.config/$directory" -name "install.sh") \
+        && "$directory" != "nvim" ]]; then
+            cd "$HOME/.config/$directory"  || (echo "Could not navigate to directory" && return)
+
+            chmod +x ./install.sh
+
+            ./install.sh
+        fi
+    done
